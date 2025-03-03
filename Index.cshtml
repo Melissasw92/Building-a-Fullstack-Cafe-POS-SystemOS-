@@ -1,0 +1,54 @@
+﻿@model List<CafeOrder>
+@{
+    ViewData["Title"] = "Main Menu";
+}
+
+<h1>Main Menu</h1>
+
+<div class="menu-options">
+    <a href="/CafeOrder/NewOrder" class="btn btn-primary">Create New Order</a>
+    @* <a href="/CafeOrder/AddItem" class="btn btn-secondary">Add Item to Existing Order</a> *@
+    @* <a href="/CafeOrder/ProcessPayment" class="btn btn-danger">Process Payment</a> *@
+</div>
+
+<h2>Open Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Server</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.Server.FirstName @order.Server.LastName</td>
+                    
+                    <td>@order.OrderDate.ToString("g")</td>
+                    <td>
+                        <a href="@Url.Action("Details", "CafeOrder", new { id = order.OrderID })" class="btn btn-info">View Details</a>
+                        
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>No open orders found.</p>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+

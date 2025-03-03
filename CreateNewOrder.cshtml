@@ -1,0 +1,27 @@
+@model IEnumerable<Server> // Model should be a list of Server objects
+
+@{
+    ViewData["Title"] = "Create New Order";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><b>Server Name</b></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var server in Model)
+        {
+            <tr>
+                <td>@server.FirstName</td>
+                <td>
+                    @Html.ActionLink("Select Server", "CreateOrder", "Cafe", new { serverId = server.ServerId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

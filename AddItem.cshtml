@@ -1,0 +1,32 @@
+@model IEnumerable<FourthWallCafe.MVC.Models.ItemPrice>
+
+@{
+    ViewData["Title"] = "Add Item to Order";
+}
+
+<h1>Add Item to Order</h1>
+
+<form asp-action="AddItemToOrder" method="post">
+    <input type="hidden" name="orderId" value="@ViewBag.OrderId" />
+
+    <div class="form-group mb-3">
+        <label for="itemPriceId">Select Item</label>
+        <select name="itemPriceId" id="itemPriceId" class="form-control" required>
+            @foreach (var itemPrice in Model)
+            {
+                <option value="@itemPrice.ItemPriceID">
+                    @itemPrice.Item.ItemName - $@itemPrice.Price.ToString("0.00")
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add to Order</button>
+    <a href="@Url.Action("OrderDetails", "Cafe", new { id = ViewBag.OrderId })" class="btn btn-secondary">Cancel</a>
+</form>
+

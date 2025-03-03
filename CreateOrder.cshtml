@@ -1,0 +1,43 @@
+@model FourthWallCafe.MVC.Models.CafeOrder
+@{
+    ViewData["Title"] = "Create New Order";
+}
+
+<h1>Create New Order</h1>
+
+<form asp-action="CreateNewOrder" method="post">
+    <input type="hidden" asp-for="OrderID" />
+    <input type="hidden" asp-for="ServerID" />
+    <input type="hidden" asp-for="OrderDate" />
+    <div class="form-group">
+        <label for="ServerID">Server ID</label>
+        <input asp-for="ServerID" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="OrderDate">Order Date</label>
+        <input asp-for="OrderDate" class="form-control" readonly />
+    </div>
+    @* <div class="form-group">
+        <label for="SubTotal">SubTotal</label>
+        <input asp-for="SubTotal" class="form-control" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label for="Tax">Tax</label>
+        <input asp-for="Tax" class="form-control" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label for="Tip">Tip</label>
+        <input asp-for="Tip" class="form-control" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label for="AmountDue">Amount Due</label>
+        <input asp-for="AmountDue" class="form-group" type="number" step="0.01" />
+    </div> *@
+
+    <button type="submit" class="btn btn-success">Create Order</button>
+    <a asp-action="NewOrder" class="btn btn-success">Cancel</a>
+</form>
+
+
+
+
