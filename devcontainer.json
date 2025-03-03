@@ -1,0 +1,16 @@
+{
+	"name": "C# (.NET)",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit",
+				"cweijan.vscode-database-client2"
+			]
+		}
+	},
+	"postStartCommand": "docker compose up -d"
+}

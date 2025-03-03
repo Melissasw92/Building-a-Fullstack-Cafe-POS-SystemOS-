@@ -1,0 +1,12 @@
+services:
+  db:
+    container_name: mysql
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+       - /tmp/mysql:/var/lib/mysql
+       - ./db:/db
+    environment:
+      MYSQL_ROOT_PASSWORD: SQLR0ck$
